@@ -40,7 +40,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": "https://unsplash.it/600/400?image=24"
+            "image": null
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -80,6 +80,13 @@ function printPosts() {
         // e creo una costante che mi permette di stampare la data in questo formato
         const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
 
+        const profileImg = (Element.author.image)
+
+        if (profileImg === null) {
+            Element.author.image = "https://www.refugee-action.org.uk/wp-content/uploads/2016/10/anonymous-user.png";
+        }
+
+
         const post = document.createElement("div");
         post.classList.add("post");
         post.innerHTML = `
@@ -118,8 +125,6 @@ function printPosts() {
         postContainer.append(post);
 
     });
-
-
     addLike();
 };
 
