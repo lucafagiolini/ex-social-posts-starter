@@ -99,7 +99,7 @@ function printPosts() {
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-${Element.id}" class="js-likes-counter">80</b> persone
+                    Piace a <b id="like-counter-${Element.id}" class="js-likes-counter">${Element.likes}</b> persone
                 </div>
             </div>
         </div>
@@ -109,11 +109,8 @@ function printPosts() {
 
     });
 
-    addLike();
-    console.log
 
-    removeLike
-    console.log
+    addLike();
 };
 
 printPosts();
@@ -124,6 +121,9 @@ printPosts();
 // Salviamo in un secondo array gli id dei post ai quali abbiamo messo il like.
 
 // // CREO UNA FUNZIONE CHE AGGIUNGE IL LIKE
+// SALVO IN UN ARRAY GLI ID DEI POST AI QUALI HO MESSO IL LIKE
+const likedPosts = [];
+
 
 function addLike() {
     const likeButtons = document.querySelectorAll(".js-like-button");
@@ -131,8 +131,6 @@ function addLike() {
 
     likeButtons.forEach(button => {
         console.dir(button)
-        // const postId = button.getAttribute("postid");
-
 
 
         button.addEventListener("click", function (event) {
@@ -145,10 +143,33 @@ function addLike() {
 
             likeCounter.textContent = likeCounterValue + 1;
 
-            button.classList.add("liked");
+            // scelgo se aggiungere o rimuovere il like
+            if (!likedPosts.includes(postId)) {
+                likedPosts.push(postId);
+                likeCounter.textContent = likeCounterValue + 1;
+                button.classList.add("liked");
+                console.log(likedPosts);
+
+
+            } else {
+                likedPosts.splice(likedPosts.indexOf(postId), 1);
+                likeCounter.textContent = likeCounterValue - 1;
+                button.classList.remove("liked");
+                console.log(likedPosts);
+
+            }
         });
     });
 }
+
+
+
+
+
+
+
+
+
 
 // // CREO UNA FUNZIONE CHE RIMUOVE IL LIKE
 
