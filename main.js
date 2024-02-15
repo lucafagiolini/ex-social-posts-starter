@@ -68,8 +68,18 @@ function printPosts() {
     const postContainer = document.querySelector(".posts-list");
     postContainer.innerHTML = "";
 
+    // creo un nuovo elemento da Element.created 
+
+
 
     posts.forEach(Element => {
+
+        const date = new Date(Element.created);
+
+        // cambio il formato in  dd/mm/yyyy
+        // e creo una costante che mi permette di stampare la data in questo formato
+        const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+
         const post = document.createElement("div");
         post.classList.add("post");
         post.innerHTML = `
@@ -81,7 +91,7 @@ function printPosts() {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${Element.author.name}</div>
-                    <div class="post-meta__time">${Element.created}</div>
+                    <div class="post-meta__time">${formattedDate}</div>
                 </div>
             </div>
         </div>
