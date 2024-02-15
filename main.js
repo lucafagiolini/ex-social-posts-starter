@@ -93,13 +93,13 @@ function printPosts() {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" href="#" data-postid="${Element.id}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                    Piace a <b id="like-counter-${Element.id}" class="js-likes-counter">80</b> persone
                 </div>
             </div>
         </div>
@@ -110,6 +110,9 @@ function printPosts() {
     });
 
     addLike();
+    console.log
+
+    removeLike
     console.log
 };
 
@@ -124,22 +127,47 @@ printPosts();
 
 function addLike() {
     const likeButtons = document.querySelectorAll(".js-like-button");
+    console.dir(likeButtons)
 
     likeButtons.forEach(button => {
+        console.dir(button)
+        // const postId = button.getAttribute("postid");
+
+
+
         button.addEventListener("click", function (event) {
             event.preventDefault();
 
-            const postId = button.getAttribute("data-postid");
+
+            const postId = button.dataset.postid;
             const likeCounter = document.querySelector(`#like-counter-${postId}`);
             const likeCounterValue = parseInt(likeCounter.textContent);
 
             likeCounter.textContent = likeCounterValue + 1;
+
             button.classList.add("liked");
-
-
         });
     });
 }
+
+// // CREO UNA FUNZIONE CHE RIMUOVE IL LIKE
+
+// function removeLike() {
+//     const likeButtons = document.querySelectorAll(".js-like-button");
+
+//     likeButtons.forEach(button => {
+//         button.addEventListener("click", function (event) {
+//             event.preventDefault();
+
+//             const postId = button.getAttribute("data-postid");
+//             const likeCounter = document.querySelector(`#like-counter-${postId}`);
+//             const likeCounterValue = parseInt(likeCounter.textContent);
+
+//             likeCounter.textContent = likeCounterValue - 1;
+//             button.classList.remove("liked");
+//         });
+//     });
+// }
 
 
 
