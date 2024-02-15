@@ -1,3 +1,4 @@
+// CREO UN ARRAY DI OGGETTI CHE RAPPRESENTANO DEI POST
 const posts = [
     {
         "id": 1,
@@ -55,3 +56,12 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+// FINE ARRAY DI OGGETTI CHE RAPPRESENTANO DEI POST
+
+
+
+
+
+
+
+
