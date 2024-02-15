@@ -40,7 +40,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/600/400?image=24"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -57,8 +57,8 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-console.log(posts)
 // FINE ARRAY DI OGGETTI CHE RAPPRESENTANO DEI POST
+
 
 
 // MILESTONE 2
@@ -67,7 +67,7 @@ console.log(posts)
 function printPosts() {
     const postContainer = document.querySelector(".posts-list");
     postContainer.innerHTML = "";
-    console.log(postContainer);
+
 
     posts.forEach(Element => {
         const post = document.createElement("div");
@@ -109,9 +109,11 @@ function printPosts() {
 
     });
 
-
+    addLike();
+    console.log
 };
-console.log(printPosts());
+
+printPosts();
 
 
 // MILESTONE 3
@@ -120,20 +122,30 @@ console.log(printPosts());
 
 // // CREO UNA FUNZIONE CHE AGGIUNGE IL LIKE
 
-// function addLike() {
-//     const likeButton = document.querySelectorAll(".js-like-button");
-//     likeButton.forEach(Element => {
-//         Element.addEventListener("click", function (event) {
-//             event.preventDefault();
-//             const postId = Element.getAttribute("data-postid");
-//             const likeCounter = document.querySelector(`#like-counter-${postId}`);
-//             const likeCounterValue = parseInt(likeCounter.textContent);
-//             likeCounter.textContent = likeCounterValue + 1;
-//             Element.classList.add("liked");
-//         });
-//     });
-//     console.log(likeButton);
-// }
+function addLike() {
+    const likeButtons = document.querySelectorAll(".js-like-button");
+
+    likeButtons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const postId = button.getAttribute("data-postid");
+            const likeCounter = document.querySelector(`#like-counter-${postId}`);
+            const likeCounterValue = parseInt(likeCounter.textContent);
+
+            likeCounter.textContent = likeCounterValue + 1;
+            button.classList.add("liked");
+
+
+        });
+    });
+}
+
+
+
+
+
+
 
 
 
